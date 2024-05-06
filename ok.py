@@ -68,9 +68,9 @@ if which_one == ":house:":
         results["icon_data"] = [{"url": icon_url, "width": 100, "height": 100, "anchorY": 100} for _ in
                                 range(len(results))]
         view_state = pdk.ViewState(
-            latitude=results["lat"].mean(),  # The latitude of the view center
+            latitude=results["lat"].mean(),
             longitude=results["lon"].mean(),
-            zoom=1,  # View zoom level
+            zoom=1,
             pitch=0
             )
 
@@ -79,10 +79,9 @@ if which_one == ":house:":
             type='ScatterplotLayer',
             data=results,
             get_position='[lon, lat]',
-            get_radius=10000,  # Larger radius for bigger dots
-            get_fill_color=[100, 40, 200],  # Dot color
+            get_radius=10000,
+            get_fill_color=[100, 40, 200],
             get_icon='marker',
-            # Use a marker icon
             pickable=True,
             radius_min_pixels=2,
             radius_max_pixels=500,
@@ -128,9 +127,9 @@ elif which_one == "CUSTOM":
     st.dataframe(df_selection)
 
     view_state = pdk.ViewState(
-        latitude=df_selection["lat"].mean(),  # The latitude of the view center
+        latitude=df_selection["lat"].mean(),
         longitude=df_selection["lon"].mean(),
-        zoom=1,  # View zoom level
+        zoom=1,
         pitch=0
     )
 
@@ -175,19 +174,18 @@ elif which_one == "US ANALYSIS":
     df_usa = df_explo[df_explo['WEAPON SOURCE COUNTRY'] == 'USA']
 
     view_state = pdk.ViewState(
-        latitude=df_usa["lat"].mean(),  # The latitude of the view center
+        latitude=df_usa["lat"].mean(),
         longitude=df_usa["lon"].mean(),
-        zoom=1,  # View zoom level
+        zoom=1,
         pitch=0
     )
     layer = pdk.Layer(
         type='ScatterplotLayer',
         data=df_usa,
         get_position='[lon, lat]',
-        get_radius=10000,  # Larger radius for bigger dots
-        get_fill_color=[100, 40, 200],  # Dot color
+        get_radius=10000,
+        get_fill_color=[100, 40, 200],
         get_icon='marker',
-        # Use a marker icon
         pickable=True,
         radius_min_pixels=2,
         radius_max_pixels=500,
